@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/circuit.css">
-    <title>Frog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="public/css/style_header.css">
+  <link rel="stylesheet" href="public/css/style_circuit.css">
+  <title> Frog Game </title>
 </head>
+
 <body>
-    <div id=container class=container>
-  
+
+  <header id="header">
+    <div id="container-button">
+      <button class="button" type="button" name="new" onclick="">New</button>
+      <button class="button" type="button" name="save" onclick="">Save</button>
+      <button class="button" type="button" name="download" onclick="">Download</button>
     </div>
-      <script src="public/js/circuit.js"></script>
+    <h1 id="title">Welcome to the Frog Game !</h1>
+    <p id="score">Score : 0</p>
+  </header>
+
+  <div id="container-circuit" class="container-circuit">
+  </div>
+  <script src="public/js/circuit.js"></script>
+
 </body>
 </html>
