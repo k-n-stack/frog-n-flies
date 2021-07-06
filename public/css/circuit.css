@@ -1,0 +1,15 @@
+.container {
+    max-width: 1100px;
+    margin: 10vh auto 0 auto;
+    
+
+}
+.square{
+    background:#39fafa;
+    width:100px;
+    height:100px;
+    float:left;
+    border:1px solid #26d669;
+    border-radius: 5px;
+  
+  }
