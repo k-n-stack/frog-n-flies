@@ -10,8 +10,13 @@
   align-items: center;
 }
 
+.button {
+  margin: 2px;
+}
+
 #title {
   margin: 0;
+  font-size: 20px;
 }
 
 #container-button {
