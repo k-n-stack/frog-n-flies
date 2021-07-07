@@ -2,6 +2,7 @@ body {
   background-color: #90caf9;
 }
 
+
 .square {
   background: url("../ressources/water50icon.png");
 }
@@ -18,6 +19,7 @@ body {
   background: url("../ressources/fly50icon.png");
 }
 
+
 #container-circuit {
   width: 100%;
   margin: 1px;
@@ -29,6 +31,7 @@ body {
 .row {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+
   justify-content: center;
 }
 

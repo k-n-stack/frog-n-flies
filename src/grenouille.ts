@@ -3,6 +3,7 @@ class grenouille extends animal {
   constructor () {
     super();
   }
+
   /*
   const button = document.querySelector("button");
   button?.addEventListener("click", handleClick:any);
@@ -13,6 +14,7 @@ class grenouille extends animal {
   }*/
 
   move (commande:String) {
+
 
   }
 

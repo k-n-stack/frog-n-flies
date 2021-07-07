@@ -1,3 +1,4 @@
+
 class circuit {
 
     private longueurCircuit : number;

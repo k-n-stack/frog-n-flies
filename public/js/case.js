@@ -1,3 +1,5 @@
+
+
 class Case {
     constructor(abscisse, ordonnee, isPassable, imgName) {
         this.abscisse = abscisse;
@@ -14,4 +16,6 @@ class Case {
     setIsPassable(value) { this.isPassable = value; }
     setImgName(value) { this.imgName = value; }
 }
+
 export { Case };
+

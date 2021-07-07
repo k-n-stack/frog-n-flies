@@ -1,3 +1,4 @@
+
 class circuit {
     constructor(longueurCircuit, largeurCircuit, score) {
         this.longueurCircuit = longueurCircuit;
@@ -80,3 +81,4 @@ class circuit {
     }
 }
 export { circuit };
+

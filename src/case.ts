@@ -22,4 +22,6 @@ class Case {
     public setImgName(value : string) : void {this.imgName = value}
 }
 
+
 export {Case};
+
