@@ -2,6 +2,22 @@ body {
   background-color: #90caf9;
 }
 
+.square {
+  background: url("../ressources/water50icon.png");
+}
+
+.frog {
+  background: url("../ressources/frog50icon.png");
+}
+
+.rock {
+  background: url("../ressources/rock50icon.png");
+}
+
+.fly {
+  background: url("../ressources/fly50icon.png");
+}
+
 #container-circuit {
   width: 100%;
   margin: 1px;
