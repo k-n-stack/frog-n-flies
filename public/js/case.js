@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Case = void 0;
 class Case {
     constructor(abscisse, ordonnee, isPassable, imgName) {
         this.abscisse = abscisse;
@@ -17,4 +14,4 @@ class Case {
     setIsPassable(value) { this.isPassable = value; }
     setImgName(value) { this.imgName = value; }
 }
-exports.Case = Case;
+export { Case };
