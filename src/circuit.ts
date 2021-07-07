@@ -1,4 +1,4 @@
-import { animal } from "./animal";
+import { animal } from "./animal.js";
 
 class circuit {
 
@@ -18,7 +18,7 @@ class circuit {
     for (var i:number = 0; i < 10; i++) { // genere une carte de 10 sur 10
       var row = document.createElement('div');
       row.setAttribute("class", "row"); // attribution classe row
-      el!.appendChild(row); // Ligne
+      el!.appendChild(row); // ligne
 
       for (var j:number = 0; j < 10; j++) {
         var col = document.createElement('div');
