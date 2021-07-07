@@ -1,4 +1,4 @@
-class Case {
+class square {
     constructor(abscisse, ordonnee, isPassable, imgName) {
         this.abscisse = abscisse;
         this.ordonnee = ordonnee;
@@ -14,4 +14,4 @@ class Case {
     setIsPassable(value) { this.isPassable = value; }
     setImgName(value) { this.imgName = value; }
 }
-export { Case };
+export { square };

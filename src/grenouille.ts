@@ -1,7 +1,10 @@
+import {animal} from "./animal.js";
+import {square} from "./square.js";
+
 class grenouille extends animal {
 
-  constructor () {
-    super();
+  constructor (iconFrog : String, value : square) {
+    super(iconFrog, value);
   }
   /*
   const button = document.querySelector("button");
@@ -12,8 +15,17 @@ class grenouille extends animal {
       this.removeEventListener("click", handleClick);
   }*/
 
-  move (commande:String) {
-
+  public move (command : String) : void {
+    switch (command) {
+      case "UP" : 
+      case "RIGHT" :
+      case "LEFT" :
+      case "DOWN" :
+    }
   }
 
+
+
 }
+
+export {grenouille};

@@ -1,3 +1,10 @@
+var player = { // Grenouille
+  name: "Grenouille",
+  coordX: 0,
+  coordY: 0,
+  css_class: "frog", // classe
+};
+
 class circuit {
 
     private longueurCircuit : number;
@@ -71,12 +78,6 @@ class circuit {
     }
 
     public generateFrog() : void {
-      var player = { // Grenouille
-        name: "Grenouille",
-        coordX: 0,
-        coordY: 0,
-        css_class: "frog", // classe
-      };
       var x = parseInt(Math.ceil(Math.random() * 10).toString()); // on genere un nombre entre 1 et 10
       var y = parseInt(Math.ceil(Math.random() * 10).toString());
       player.coordX = x; // On set les coordonnées
@@ -90,6 +91,10 @@ class circuit {
       } else {
         this.generateFrog();
       };
+    }
+
+    public getPlayer() : Object {
+      return player;
     }
 
 

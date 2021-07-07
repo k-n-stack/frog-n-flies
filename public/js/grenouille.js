@@ -1,7 +1,7 @@
-"use strict";
+import { animal } from "./animal.js";
 class grenouille extends animal {
-    constructor() {
-        super();
+    constructor(iconFrog, value) {
+        super(iconFrog, value);
     }
     /*
     const button = document.querySelector("button");
@@ -11,6 +11,13 @@ class grenouille extends animal {
         console.log("Clicked!");
         this.removeEventListener("click", handleClick);
     }*/
-    move(commande) {
+    move(command) {
+        switch (command) {
+            case "UP":
+            case "RIGHT":
+            case "LEFT":
+            case "DOWN":
+        }
     }
 }
+export { grenouille };

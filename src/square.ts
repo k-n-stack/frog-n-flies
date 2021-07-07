@@ -1,4 +1,4 @@
-class Case {
+class square {
     private abscisse : number;
     private ordonnee : number;
     private isPassable : boolean;
@@ -22,4 +22,4 @@ class Case {
     public setImgName(value : string) : void {this.imgName = value}
 }
 
-export {Case};
+export {square};
