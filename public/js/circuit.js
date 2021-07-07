@@ -1,11 +1,11 @@
-var player = {
-    name: "Grenouille",
-    coordX: 0,
-    coordY: 0,
-    css_class: "frog", // classe
-};
 class circuit {
     constructor(longueurCircuit, largeurCircuit, score) {
+        this.frog = {
+            name: "Grenouille",
+            coordX: 0,
+            coordY: 0,
+            css_class: "frog", // classe
+        };
         this.longueurCircuit = longueurCircuit;
         this.largeurCircuit = largeurCircuit;
         this.score = score;
@@ -66,8 +66,8 @@ class circuit {
     generateFrog() {
         var x = parseInt(Math.ceil(Math.random() * 10).toString()); // on genere un nombre entre 1 et 10
         var y = parseInt(Math.ceil(Math.random() * 10).toString());
-        player.coordX = x; // On set les coordonnées
-        player.coordY = y;
+        this.frog.coordX = x; // On set les coordonnées
+        this.frog.coordY = y;
         var frog = document.querySelector(".square[data-x='" + x + "'][data-y='" + y + "']"); // on recupere la case
         if (frog.getAttribute("type") === "") { // test si la case est vide
             frog.setAttribute("type", "frog"); // on defini le type a frog
@@ -79,7 +79,7 @@ class circuit {
         ;
     }
     getPlayer() {
-        return player;
+        return this.frog;
     }
 }
 export { circuit };
