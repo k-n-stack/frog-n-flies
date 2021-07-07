@@ -9,16 +9,20 @@ class grenouille extends animal {
         square.classList.remove('frog');
         switch (command) {
             case "UP":
-                var square = document.querySelector(".square[data-x='" + value.frog.coordX + "'][data-y='" + (value.frog.coordY + 1) + "']");
-                square.classList.add('frog');
+                value.frog.coordY = value.frog.coordY - 1;
                 break;
             case "RIGHT":
+                value.frog.coordX = value.frog.coordX + 1;
                 break;
             case "LEFT":
+                value.frog.coordX = value.frog.coordX - 1;
                 break;
             case "DOWN":
+                value.frog.coordY = value.frog.coordY + 1;
                 break;
         }
+        square = document.querySelector(".square[data-x='" + value.frog.coordX + "'][data-y='" + value.frog.coordY + "']");
+        square.classList.add('frog');
     }
 }
 export { grenouille };
