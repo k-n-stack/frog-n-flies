@@ -13,8 +13,14 @@ class circuit {
       css_class: "frog", // classe
     };
     public flies : {name:string, coordX:number, coordY:number}[] = [];
+    public cookieValue : {Html:string, Frog:Object, Flies: any[]} = {
+      Html: "",
+      Frog: {},
+      Flies: [],
+    };
+    public static cookieName : string = "circuit";
 
-    constructor(longueurCircuit : number, largeurCircuit : number, score : number) {
+    constructor(longueurCircuit : number, largeurCircuit : number, score : number,) {
         this.longueurCircuit = longueurCircuit;
         this.largeurCircuit = largeurCircuit;
         this.score = score;
@@ -142,6 +148,72 @@ class circuit {
         console.log('in popFly functionality');
         this.flies.splice(_index, 1);
       }
+    }
+
+    public setCookie() : void {
+      this.cookieValue = {
+        Html: document.body.innerHTML,
+        Frog: this.frog,
+        Flies: this.flies,
+      }
+      var exdays : number = 20;
+      var d = new Date();
+      // Configure the expiration date: current date + x days
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires="+ d.toUTCString();
+      console.log("Dans setCookie : " + expires);
+
+      /*localStorage.setItem(circuit.cookieName, JSON.stringify(this.cookieValue));
+      console.log(localStorage.getItem(circuit.cookieName));*/
+
+      let container : Element | null = document.getElementById('container-circuit');
+      let allchild : any = container!.getElementsByTagName("*");
+      let matrice : {x:number, y:number, type:string}[] = [];
+
+      for(let element of allchild) {
+        matrice.push({
+          x: element.getAttribute('data-x'),
+          y: element.getAttribute('data-y'),
+          type: element.className
+        });
+      }
+
+      localStorage.setItem(circuit.cookieName, JSON.stringify(matrice));
+
+      //console.log(localStorage.getItem(circuit.cookieName));
+      //document.cookie = (circuit.cookieName + "='test'");
+      //document.cookie = circuit.cookieName + "='" + JSON.stringify(this.cookieValue) + "'; " + expires + "; path=/";
+    }
+
+    public static getCookie() : circuit {
+
+      if(localStorage.length>0){
+        //Si les cookies sont pleins: (.length>0)
+        let cookie  : string = localStorage.getItem(circuit.cookieName) as string;
+        if(cookie.length > 2){
+          cookie = cookie.split("; ").filter(function(item){
+            return item.startsWith(circuit.cookieName+"=");
+            //.filter => variante de .find (find fonctionne seulement sur firefox)
+          })[0].substring(circuit.cookieName.length+1);
+          //[?]substring => affiche le contenu après une "string=";
+          return JSON.parse(cookie) as circuit;
+        }
+      }
+
+      /*if(document.cookie.length>0){
+        //Si les cookies sont pleins: (.length>0)
+        let cookie  : string = document.cookie;
+        if(cookie.length > 2){
+          cookie = cookie.split("; ").filter(function(item){
+            return item.startsWith(circuit.cookieName+"=");
+            //.filter => variante de .find (find fonctionne seulement sur firefox)
+          })[0].substring(circuit.cookieName.length+1);
+          //[?]substring => affiche le contenu après une "string=";
+          return JSON.parse(cookie) as circuit;
+        }
+      }*/
+
+       return new circuit(20, 20, 0);
     }
 
 
