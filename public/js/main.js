@@ -9,7 +9,6 @@ document.getElementById("bas").addEventListener("click", function () { direction
 function direction(direction) {
     var frog = new grenouille("NomIconFrog");
     if (direction == "haut") {
-        console.log("gogogo gadgeto");
         frog.move(test, "UP");
     }
     else if (direction == "droite") {

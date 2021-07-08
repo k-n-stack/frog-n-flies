@@ -11,29 +11,65 @@ class grenouille extends animal {
         var squareDown = document.querySelector(".square[data-x='" + value.frog.coordX + "'][data-y='" + (value.frog.coordY + 1) + "']");
         switch (command) {
             case "UP":
-                if (squareUp.classList[1] == "rock") {
-                    alert("Un rocher bloque le passage !");
+                if (squareUp) {
+                    if (squareUp.classList[1] == "rock") {
+                        alert("Un rocher bloque le passage !");
+                        return;
+                    }
+                    if (squareUp.classList[1] == "fly") {
+                        squareUp.classList.remove("fly");
+                    }
+                }
+                if (value.frog.coordY - 1 == 0) {
+                    alert("c'est en dehors de l'espace !");
                     return;
                 }
                 value.frog.coordY = value.frog.coordY - 1;
                 break;
             case "RIGHT":
-                if (squareRight.classList[1] == "rock") {
-                    alert("Un rocher bloque le passage !");
+                if (squareRight) {
+                    if (squareRight.classList[1] == "rock") {
+                        alert("Un rocher bloque le passage !");
+                        return;
+                    }
+                    if (squareRight.classList[1] == "fly") {
+                        squareRight.classList.remove("fly");
+                    }
+                }
+                if (value.frog.coordX + 1 == 11) {
+                    alert("c'est en dehors de l'espace !");
                     return;
                 }
                 value.frog.coordX = value.frog.coordX + 1;
                 break;
             case "LEFT":
-                if (squareLeft.classList[1] == "rock") {
-                    alert("Un rocher bloque le passage !");
+                if (squareLeft) {
+                    if (squareLeft.classList[1] == "rock") {
+                        alert("Un rocher bloque le passage !");
+                        return;
+                    }
+                    if (squareLeft.classList[1] == "fly") {
+                        squareLeft.classList.remove("fly");
+                    }
+                }
+                if (value.frog.coordX - 1 == 0) {
+                    alert("c'est en dehors de l'espace !");
                     return;
                 }
                 value.frog.coordX = value.frog.coordX - 1;
                 break;
             case "DOWN":
-                if (squareDown.classList[1] == "rock") {
-                    alert("Un rocher bloque le passage !");
+                if (squareDown) {
+                    if (squareDown.classList[1] == "rock") {
+                        alert("Un rocher bloque le passage !");
+                        return;
+                    }
+                    if (squareDown.classList[1] == "fly") {
+                        squareDown.classList.remove("fly");
+                    }
+                }
+                if (value.frog.coordY + 1 == 11) {
+                    alert("c'est en dehors de l'espace !");
                     return;
                 }
                 value.frog.coordY = value.frog.coordY + 1;

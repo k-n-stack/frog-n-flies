@@ -12,7 +12,6 @@ document.getElementById("bas")!.addEventListener("click", function() { direction
 function direction(direction : String) : any {
   var frog : grenouille = new grenouille("NomIconFrog");
   if (direction == "haut") {
-    console.log("gogogo gadgeto");
     frog.move(test, "UP");
   } else if (direction == "droite") {
     frog.move(test, "RIGHT");
