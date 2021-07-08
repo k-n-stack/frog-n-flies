@@ -80,10 +80,26 @@ class circuit {
         }
         ;
     }
-    getPlayer() {
-        return this.frog;
-    }
     checkGenerate() {
+        var squareLeft = document.querySelector(".square[data-x='" + (this.frog.coordX - 1) + "'][data-y='" + this.frog.coordY + "']");
+        var squareRight = document.querySelector(".square[data-x='" + (this.frog.coordX + 1) + "'][data-y='" + this.frog.coordY + "']");
+        var squareUp = document.querySelector(".square[data-x='" + this.frog.coordX + "'][data-y='" + (this.frog.coordY - 1) + "']");
+        var squareDown = document.querySelector(".square[data-x='" + this.frog.coordX + "'][data-y='" + (this.frog.coordY + 1) + "']");
+        if (squareLeft == null) {
+            squareLeft = document.getElementById("score");
+        }
+        else if (squareRight == null) {
+            squareRight = document.getElementById("score");
+        }
+        else if (squareUp == null) {
+            squareUp = document.getElementById("score");
+        }
+        else if (squareDown == null) {
+            squareDown = document.getElementById("score");
+        }
+        if ((squareLeft.classList[1] == "rock" || this.frog.coordX - 1 == 0) && (squareRight.classList[1] == "rock" || this.frog.coordX + 1 == 11) && (squareUp.classList[1] == "rock" || this.frog.coordY - 1 == 0) && (squareDown.classList[1] == "rock" || this.frog.coordY + 1 == 11)) {
+            window.location.reload();
+        }
     }
     Turn(value, command) {
         var frog = new grenouille("NomIconFrog");

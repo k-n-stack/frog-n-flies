@@ -2,6 +2,7 @@ import {circuit} from "./circuit.js";
 
 var obj : circuit = new circuit(10, 10, 0);
 obj.generate(20);
+obj.checkGenerate();
 
 document.getElementById("haut")!.addEventListener("click", function() { direction("haut"); });
 document.getElementById("droite")!.addEventListener("click", function() { direction("droite"); });
