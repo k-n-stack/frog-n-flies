@@ -1,4 +1,5 @@
 import {grenouille} from "./grenouille.js";
+import {mouche} from "./mouche.js";
 
 class circuit {
 
@@ -123,6 +124,8 @@ class circuit {
       var frog : grenouille = new grenouille("NomIconFrog");
       frog.move(value, command);
       document.getElementById("score")!.innerHTML = "Score : " + this.score + "";
+      var flie : mouche = new mouche("nomIconFlie");
+      flie.moveAll(this.flies);
     }
 
     public popFly(coordX : number, coordY : number) : void {
