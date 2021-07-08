@@ -1,11 +1,10 @@
 import {animal} from "./animal.js";
-//import {square} from "./square.js";
 import {circuit} from "./circuit.js";
 
 class grenouille extends animal {
 
-  constructor (iconFrog : String/*, value : square*/) {
-    super(iconFrog); /*, value*/
+  constructor (iconFrog : String) {
+    super(iconFrog);
   }
 
   public move (value : circuit, command : String) : void {
@@ -24,6 +23,7 @@ class grenouille extends animal {
         }
         if (squareUp!.classList[1] == "fly") {
           squareUp!.classList.remove("fly");
+          value.score = value.score + 1;
         }
       }
       if (value.frog.coordY - 1 == 0) {
@@ -41,6 +41,7 @@ class grenouille extends animal {
         }
         if (squareRight!.classList[1] == "fly") {
           squareRight!.classList.remove("fly");
+          value.score = value.score + 1;
         }
       }
       if (value.frog.coordX + 1 == 11) {
@@ -58,6 +59,7 @@ class grenouille extends animal {
         }
         if (squareLeft!.classList[1] == "fly") {
           squareLeft!.classList.remove("fly");
+          value.score = value.score + 1;
         }
       }
       if (value.frog.coordX - 1 == 0) {
@@ -75,6 +77,7 @@ class grenouille extends animal {
         }
         if (squareDown!.classList[1] == "fly") {
           squareDown!.classList.remove("fly");
+          value.score = value.score + 1;
         }
       }
       if (value.frog.coordY + 1 == 11) {
@@ -89,6 +92,7 @@ class grenouille extends animal {
     square!.classList.remove('frog');
     square = document.querySelector(".square[data-x='" + value.frog.coordX + "'][data-y='" + value.frog.coordY + "']");
     square!.classList.add('frog');
+    return;
   }
 
 

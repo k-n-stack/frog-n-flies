@@ -1,5 +1,7 @@
+import { grenouille } from "./grenouille.js";
 class circuit {
     constructor(longueurCircuit, largeurCircuit, score) {
+        this.score = 0;
         this.frog = {
             name: "Grenouille",
             coordX: 0,
@@ -80,6 +82,13 @@ class circuit {
     }
     getPlayer() {
         return this.frog;
+    }
+    checkGenerate() {
+    }
+    Turn(value, command) {
+        var frog = new grenouille("NomIconFrog");
+        frog.move(value, command);
+        document.getElementById("score").innerHTML = "Score : " + this.score + "";
     }
 }
 export { circuit };

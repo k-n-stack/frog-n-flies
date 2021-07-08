@@ -1,8 +1,10 @@
+import {grenouille} from "./grenouille.js";
+
 class circuit {
 
     private longueurCircuit : number;
     private largeurCircuit : number;
-    private score : number;
+    public score : number = 0;
     public frog = { // Grenouille
       name: "Grenouille",
       coordX: 0,
@@ -82,7 +84,6 @@ class circuit {
       this.frog.coordX = x; // On set les coordonnées
       this.frog.coordY = y;
 
-
       var frog = document.querySelector(".square[data-x='" + x + "'][data-y='" + y + "']"); // on recupere la case
       if (frog!.getAttribute("type") === "") { // test si la case est vide
         frog!.setAttribute("type", "frog"); // on defini le type a frog
@@ -94,6 +95,16 @@ class circuit {
 
     public getPlayer() : Object {
       return this.frog;
+    }
+
+    public checkGenerate() : void {
+
+    }
+
+    public Turn(value : circuit, command : String) : void {
+      var frog : grenouille = new grenouille("NomIconFrog");
+      frog.move(value, command);
+      document.getElementById("score")!.innerHTML = "Score : " + this.score + "";
     }
 
 
