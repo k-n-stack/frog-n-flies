@@ -6,12 +6,11 @@ abstract class animal {
   private iconName : String;
   //private square : square;
 
-  constructor (iconName : String/*, square : square*/) {
+  constructor (iconName : String) {
     this.iconName = iconName;
-    /*this.square = square;*/
   }
 
-  public move (direction : String | circuit, command : String) : void {
+  public move (direction : String | circuit | {name:string, coordX:number, coordY:number}, command : String | null) : void {
   }
 
 }

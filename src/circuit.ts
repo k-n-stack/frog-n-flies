@@ -11,6 +11,7 @@ class circuit {
       coordY: 0,
       css_class: "frog", // classe
     };
+    public flies : {name:string, coordX:number, coordY:number}[] = [];
 
     constructor(longueurCircuit : number, largeurCircuit : number, score : number) {
         this.longueurCircuit = longueurCircuit;
@@ -72,6 +73,12 @@ class circuit {
             if (fly!.getAttribute("type") === "") { // test si la case est vide
               fly!.setAttribute("type", "fly"); // on defini le type a fly
               fly!.classList.add("fly"); // on attribue la classe fly
+              let _fly = {
+                name : `mouche${i}`,
+                coordX : x,
+                coordY : y,
+              };
+              this.flies.push(_fly);
             } else {
               i--; // si la case n'est pas vide on recommence l'iteration
             };
@@ -116,6 +123,22 @@ class circuit {
       var frog : grenouille = new grenouille("NomIconFrog");
       frog.move(value, command);
       document.getElementById("score")!.innerHTML = "Score : " + this.score + "";
+    }
+
+    public popFly(coordX : number, coordY : number) : void {
+      console.log("Wow tu es rentré dans popFly !");
+      let _index : number = -1;
+      this.flies.forEach(function(element, index) {
+        console.log('here');
+        if(element.coordX === coordX && element.coordY === coordY) {
+          console.log('attraper');
+          _index = index;
+        }
+      });
+      if(_index != -1) {
+        console.log('in popFly functionality');
+        this.flies.splice(_index, 1);
+      }
     }
 
 

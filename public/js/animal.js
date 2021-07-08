@@ -1,8 +1,7 @@
 class animal {
     //private square : square;
-    constructor(iconName /*, square : square*/) {
+    constructor(iconName) {
         this.iconName = iconName;
-        /*this.square = square;*/
     }
     move(direction, command) {
     }

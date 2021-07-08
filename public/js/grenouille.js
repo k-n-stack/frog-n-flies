@@ -4,6 +4,7 @@ class grenouille extends animal {
         super(iconFrog);
     }
     move(value, command) {
+        console.log(value.flies);
         var square = document.querySelector(".square[data-x='" + value.frog.coordX + "'][data-y='" + value.frog.coordY + "']");
         var squareLeft = document.querySelector(".square[data-x='" + (value.frog.coordX - 1) + "'][data-y='" + value.frog.coordY + "']");
         var squareRight = document.querySelector(".square[data-x='" + (value.frog.coordX + 1) + "'][data-y='" + value.frog.coordY + "']");
@@ -18,6 +19,7 @@ class grenouille extends animal {
                     }
                     if (squareUp.classList[1] == "fly") {
                         squareUp.classList.remove("fly");
+                        value.popFly(value.frog.coordX, value.frog.coordY - 1);
                         value.score = value.score + 1;
                     }
                 }
@@ -35,6 +37,7 @@ class grenouille extends animal {
                     }
                     if (squareRight.classList[1] == "fly") {
                         squareRight.classList.remove("fly");
+                        value.popFly(value.frog.coordX + 1, value.frog.coordY);
                         value.score = value.score + 1;
                     }
                 }
@@ -52,6 +55,7 @@ class grenouille extends animal {
                     }
                     if (squareLeft.classList[1] == "fly") {
                         squareLeft.classList.remove("fly");
+                        value.popFly(value.frog.coordX - 1, value.frog.coordY);
                         value.score = value.score + 1;
                     }
                 }
@@ -69,6 +73,7 @@ class grenouille extends animal {
                     }
                     if (squareDown.classList[1] == "fly") {
                         squareDown.classList.remove("fly");
+                        value.popFly(value.frog.coordX, value.frog.coordY + 1);
                         value.score = value.score + 1;
                     }
                 }
