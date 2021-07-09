@@ -19,6 +19,7 @@ class circuit {
         this.largeurCircuit = largeurCircuit;
         this.score = score;
     }
+    //Call les différentes fonctions, de facon à générer le layout du jeu.
     generate(nombreMouche) {
         this.generateMap(this.longueurCircuit, this.largeurCircuit);
         this.generateRocks();
@@ -65,11 +66,13 @@ class circuit {
             if (fly.getAttribute("type") === "") { // test si la case est vide
                 fly.setAttribute("type", "fly"); // on defini le type a fly
                 fly.classList.add("fly"); // on attribue la classe fly
+                //Creation d'un object littéral d'une mouche
                 let _fly = {
                     name: `mouche${i}`,
                     coordX: x,
                     coordY: y,
                 };
+                //On Ajoute cet objet littéral dans un tableau
                 this.flies.push(_fly);
             }
             else {
@@ -93,6 +96,7 @@ class circuit {
         }
         ;
     }
+    //Vérifie le placement de la grenouille au "START" du jeu. condition : Si la grenouille est entouré de "ROCK" le jeu restart.
     checkGenerate() {
         var squareLeft = document.querySelector(".square[data-x='" + (this.frog.coordX - 1) + "'][data-y='" + this.frog.coordY + "']");
         var squareRight = document.querySelector(".square[data-x='" + (this.frog.coordX + 1) + "'][data-y='" + this.frog.coordY + "']");
@@ -103,6 +107,7 @@ class circuit {
             window.location.reload();
         }
     }
+    //pass turn each time "frog" does an action:
     Turn(value, command) {
         var frog = new grenouille("NomIconFrog");
         frog.move(value, command);
@@ -110,6 +115,8 @@ class circuit {
         var flie = new mouche("nomIconFlie");
         flie.moveAll(this.flies);
     }
+    //effectue une comparaison entre la position des mouches et de la grenouille.
+    //Si les positions récupéré correspondent, la mouche MEURT !
     popFly(coordX, coordY) {
         console.log("Wow tu es rentré dans popFly !");
         let _index = -1;
@@ -125,6 +132,10 @@ class circuit {
             this.flies.splice(_index, 1);
         }
     }
+    //Set expiration Date Cookie.
+    //Store Data Cookie.
+    //JSON.stringify: method converts a JavaScript object or value to a JSON string.
+    //toUTCString: method converts a date to a string, using the UTC time zone
     setCookie(value) {
         var exdays = 20;
         var d = new Date();
@@ -134,6 +145,9 @@ class circuit {
         console.log("Dans setCookie : " + expires);
         localStorage.setItem(circuit.cookieName, JSON.stringify(value));
     }
+    // Get Data Cookie.
+    // return "string" (JSON.parse) into an "bordel" object.
+    // "bordel" = type (voir construct)
     getCookie() {
         let cookieValue = localStorage.getItem(circuit.cookieName);
         return JSON.parse(cookieValue);

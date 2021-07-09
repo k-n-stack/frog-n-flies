@@ -1,6 +1,7 @@
 import {grenouille} from "./grenouille.js";
 import {mouche} from "./mouche.js";
 
+//Défini un pattern de type spécifique, pour stocker les données du jeu dans un cookie.
 type bordel = {
   tags : {
     x: number,
@@ -45,6 +46,7 @@ class circuit {
         this.score = score;
     }
 
+    //Call les différentes fonctions, de facon à générer le layout du jeu.
     public generate(nombreMouche : number) : void {
         this.generateMap(this.longueurCircuit, this.largeurCircuit);
         this.generateRocks();
@@ -99,11 +101,13 @@ class circuit {
             if (fly!.getAttribute("type") === "") { // test si la case est vide
               fly!.setAttribute("type", "fly"); // on defini le type a fly
               fly!.classList.add("fly"); // on attribue la classe fly
+              //Creation d'un object littéral d'une mouche
               let _fly = {
                 name : `mouche${i}`,
                 coordX : x,
                 coordY : y,
               };
+              //On Ajoute cet objet littéral dans un tableau
               this.flies.push(_fly);
             } else {
               i--; // si la case n'est pas vide on recommence l'iteration
@@ -126,6 +130,7 @@ class circuit {
       };
     }
 
+    //Vérifie le placement de la grenouille au "START" du jeu. condition : Si la grenouille est entouré de "ROCK" le jeu restart.
     public checkGenerate() : void {
       var squareLeft = document.querySelector(".square[data-x='" + (this.frog.coordX - 1) + "'][data-y='" + this.frog.coordY + "']");
       var squareRight = document.querySelector(".square[data-x='" + (this.frog.coordX + 1) + "'][data-y='" + this.frog.coordY + "']");
@@ -138,6 +143,7 @@ class circuit {
       }
     }
 
+    //pass turn each time "frog" does an action:
     public Turn(value : circuit, command : String) : void {
       var frog : grenouille = new grenouille("NomIconFrog");
       frog.move(value, command);
@@ -146,6 +152,8 @@ class circuit {
       flie.moveAll(this.flies);
     }
 
+    //effectue une comparaison entre la position des mouches et de la grenouille.
+    //Si les positions récupéré correspondent, la mouche MEURT !
     public popFly(coordX : number, coordY : number) : void {
       console.log("Wow tu es rentré dans popFly !");
       let _index : number = -1;
@@ -162,6 +170,10 @@ class circuit {
       }
     }
 
+    //Set expiration Date Cookie.
+    //Store Data Cookie.
+    //JSON.stringify: method converts a JavaScript object or value to a JSON string.
+    //toUTCString: method converts a date to a string, using the UTC time zone
     public setCookie(value : bordel) : void {
       var exdays : number = 20;
       var d = new Date();
@@ -173,6 +185,9 @@ class circuit {
       localStorage.setItem(circuit.cookieName, JSON.stringify(value));
     }
 
+    // Get Data Cookie.
+    // return "string" (JSON.parse) into an "bordel" object.
+    // "bordel" = type (voir construct)
     public getCookie() : bordel {
       let cookieValue = localStorage.getItem(circuit.cookieName) as string;
       return JSON.parse(cookieValue);
