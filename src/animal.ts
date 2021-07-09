@@ -1,5 +1,4 @@
 import {circuit} from "./circuit.js";
-import {square} from "./square.js";
 
 abstract class animal {
 

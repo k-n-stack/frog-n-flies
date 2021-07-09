@@ -98,19 +98,8 @@ class circuit {
         var squareRight = document.querySelector(".square[data-x='" + (this.frog.coordX + 1) + "'][data-y='" + this.frog.coordY + "']");
         var squareUp = document.querySelector(".square[data-x='" + this.frog.coordX + "'][data-y='" + (this.frog.coordY - 1) + "']");
         var squareDown = document.querySelector(".square[data-x='" + this.frog.coordX + "'][data-y='" + (this.frog.coordY + 1) + "']");
-        if (squareLeft == null) {
-            squareLeft = document.getElementById("score");
-        }
-        else if (squareRight == null) {
-            squareRight = document.getElementById("score");
-        }
-        else if (squareUp == null) {
-            squareUp = document.getElementById("score");
-        }
-        else if (squareDown == null) {
-            squareDown = document.getElementById("score");
-        }
-        if ((squareLeft.classList[1] == "rock" || this.frog.coordX - 1 == 0) && (squareRight.classList[1] == "rock" || this.frog.coordX + 1 == 11) && (squareUp.classList[1] == "rock" || this.frog.coordY - 1 == 0) && (squareDown.classList[1] == "rock" || this.frog.coordY + 1 == 11)) {
+        if (((squareLeft ? (squareLeft.classList[1] == "rock") : true) || this.frog.coordX - 1 == 0) && ((squareRight ? (squareRight.classList[1] == "rock") : true) || this.frog.coordX + 1 == 11) && ((squareUp ? (squareUp.classList[1] == "rock") : true) || this.frog.coordY - 1 == 0) && ((squareDown ? (squareDown.classList[1] == "rock") : true) || this.frog.coordY + 1 == 11)) {
+            alert("Bloqué");
             window.location.reload();
         }
     }
@@ -136,61 +125,18 @@ class circuit {
             this.flies.splice(_index, 1);
         }
     }
-    setCookie() {
-        this.cookieValue = {
-            Html: document.body.innerHTML,
-            Frog: this.frog,
-            Flies: this.flies,
-        };
+    setCookie(value) {
         var exdays = 20;
         var d = new Date();
         // Configure the expiration date: current date + x days
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         var expires = "expires=" + d.toUTCString();
         console.log("Dans setCookie : " + expires);
-        /*localStorage.setItem(circuit.cookieName, JSON.stringify(this.cookieValue));
-        console.log(localStorage.getItem(circuit.cookieName));*/
-        let container = document.getElementById('container-circuit');
-        let allchild = container.getElementsByTagName("*");
-        let matrice = [];
-        for (let element of allchild) {
-            matrice.push({
-                x: element.getAttribute('data-x'),
-                y: element.getAttribute('data-y'),
-                type: element.className
-            });
-        }
-        localStorage.setItem(circuit.cookieName, JSON.stringify(matrice));
-        //console.log(localStorage.getItem(circuit.cookieName));
-        //document.cookie = (circuit.cookieName + "='test'");
-        //document.cookie = circuit.cookieName + "='" + JSON.stringify(this.cookieValue) + "'; " + expires + "; path=/";
+        localStorage.setItem(circuit.cookieName, JSON.stringify(value));
     }
-    static getCookie() {
-        if (localStorage.length > 0) {
-            //Si les cookies sont pleins: (.length>0)
-            let cookie = localStorage.getItem(circuit.cookieName);
-            if (cookie.length > 2) {
-                cookie = cookie.split("; ").filter(function (item) {
-                    return item.startsWith(circuit.cookieName + "=");
-                    //.filter => variante de .find (find fonctionne seulement sur firefox)
-                })[0].substring(circuit.cookieName.length + 1);
-                //[?]substring => affiche le contenu après une "string=";
-                return JSON.parse(cookie);
-            }
-        }
-        /*if(document.cookie.length>0){
-          //Si les cookies sont pleins: (.length>0)
-          let cookie  : string = document.cookie;
-          if(cookie.length > 2){
-            cookie = cookie.split("; ").filter(function(item){
-              return item.startsWith(circuit.cookieName+"=");
-              //.filter => variante de .find (find fonctionne seulement sur firefox)
-            })[0].substring(circuit.cookieName.length+1);
-            //[?]substring => affiche le contenu après une "string=";
-            return JSON.parse(cookie) as circuit;
-          }
-        }*/
-        return new circuit(20, 20, 0);
+    getCookie() {
+        let cookieValue = localStorage.getItem(circuit.cookieName);
+        return JSON.parse(cookieValue);
     }
 }
 circuit.cookieName = "circuit";
