@@ -13,7 +13,7 @@ class mouche extends animal {
         switch (command) {
             case 1:
                 if (squareUp) {
-                    if (squareUp.classList[1] == "rock" || squareUp.classList[1] == "frog") {
+                    if (squareUp.classList[1] == "rock" || squareUp.classList[1] == "frog" || squareUp.classList[1] == "fly") {
                         return;
                     }
                 }
@@ -24,7 +24,7 @@ class mouche extends animal {
                 break;
             case 2:
                 if (squareRight) {
-                    if (squareRight.classList[1] == "rock" || squareRight.classList[1] == "frog") {
+                    if (squareRight.classList[1] == "rock" || squareRight.classList[1] == "frog" || squareRight.classList[1] == "fly") {
                         return;
                     }
                 }
@@ -35,7 +35,7 @@ class mouche extends animal {
                 break;
             case 3:
                 if (squareLeft) {
-                    if (squareLeft.classList[1] == "rock" || squareLeft.classList[1] == "frog") {
+                    if (squareLeft.classList[1] == "rock" || squareLeft.classList[1] == "frog" || squareLeft.classList[1] == "fly") {
                         return;
                     }
                 }
@@ -46,7 +46,7 @@ class mouche extends animal {
                 break;
             case 4:
                 if (squareDown) {
-                    if (squareDown.classList[1] == "rock" || squareDown.classList[1] == "frog") {
+                    if (squareDown.classList[1] == "rock" || squareDown.classList[1] == "frog" || squareDown.classList[1] == "fly") {
                         return;
                     }
                 }
